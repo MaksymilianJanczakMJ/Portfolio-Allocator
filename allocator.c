@@ -5,17 +5,17 @@
 #include "allocator.h"
 
 
-valor make_valor(const char *name, double value, double percent) {
-    valor v;
+instrument make_instrument(const char *name, double value, double target_percent) {
+    instrument v;
     strcpy(v.name, name);
     v.value = value;
-    v.target_percent = percent;
+    v.target_percent = target_percent;
     v.additional_percent = 0;
     return v;
 }
 
 
-double calc_total_value(valor v[], int rows) {
+double calc_total_value(instrument v[], int rows) {
     int row;
     double total_value = 0;
 
@@ -27,7 +27,7 @@ double calc_total_value(valor v[], int rows) {
 }
 
 
-int calc_v(valor v[], double total_value, double payment, int rows) {
+int calc_v(instrument v[], double total_value, double payment, int rows) {
     int row;
     double sum_target_percent = 0;
     for (row = 0; row < rows; row++) {
@@ -47,7 +47,7 @@ int calc_v(valor v[], double total_value, double payment, int rows) {
 }
 
 
-int sort_by_fulfillment(int positions[], valor v[], int rows) {
+int sort_by_fulfillment(int positions[], instrument v[], int rows) {
     int row, position[rows];
     int stop, pos;
     int tmp;
@@ -78,7 +78,7 @@ int sort_by_fulfillment(int positions[], valor v[], int rows) {
 }
 
 
-void allocate_payment(valor v[], double payment, int rows) {
+void allocate_payment(instrument v[], double payment, int rows) {
     int i, j;
     int positions[rows];
     double additional_percents, sum_additional_percent, sum_target_percent, total_value = 0;
@@ -119,7 +119,7 @@ void allocate_payment(valor v[], double payment, int rows) {
 }
 
 
-void calc_v_payment(valor v[], double total_value, double payment, int rows) {
+void calc_v_payment(instrument v[], double total_value, double payment, int rows) {
     int row;
     for (row = 0; row < rows; row++) {
         v[row].additional_value = v[row].additional_percent * (total_value + payment);
@@ -128,7 +128,7 @@ void calc_v_payment(valor v[], double total_value, double payment, int rows) {
 }
 
 
-void v_to_table(valor v[], char out[][NAME_LEN], const int rows, const int columns) {
+void v_to_table(instrument v[], char out[][NAME_LEN], const int rows, const int columns) {
     int row;
     char str[128];
 
