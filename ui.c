@@ -22,7 +22,7 @@ int print_table(const char headers[][128], const char data[][128], const int row
         return 1;
     }
 
-    //Calculating optimal size of every column.
+    /* Calculating optimal size of each column. */
     for (column = 0; column < columns; column++) {
         sizes[column] = strlen(headers[column]);
 
@@ -33,7 +33,7 @@ int print_table(const char headers[][128], const char data[][128], const int row
         }
     }
 
-    //Printing headers.
+    /* Printing headers. */
     printf("|");
     for (column = 0; column < columns; column++) {
         printf(" %s", headers[column]);
@@ -43,7 +43,7 @@ int print_table(const char headers[][128], const char data[][128], const int row
     }
     printf("\n");
 
-    //Printing line separating headers from the rest of the table.
+    /* Printing line separating headers from the rest of the table. */
     printf("|");
     for (column = 0; column < columns; column++) {
         for (i = 0; i < sizes[column] + 1; i++) {
@@ -54,7 +54,7 @@ int print_table(const char headers[][128], const char data[][128], const int row
     printf("\n");
 
     //Printing the rest of the table.
-    for (row = 0; row < rows; row++) {
+    for (row = 0; row < rows && strcmp(data[columns * row], "") != 0; row++) {
         printf("|");
         for (column = 0; column < columns; column++) {
             printf(" %s", data[columns * row + column]);
