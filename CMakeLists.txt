@@ -8,4 +8,5 @@ add_executable(Portfolio_allocator
         allocator.c
         allocator.h
         ui.c
-        ui.h)
+        ui.h
+        config.h)

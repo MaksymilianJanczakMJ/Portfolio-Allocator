@@ -5,7 +5,7 @@
 #include "ui.h"
 
 
-int print_table(const char headers[][128], const char data[][128], const int rows, const int columns) {
+int print_table(const char headers[][NAME_LEN], const char data[][NAME_LEN], const int rows, const int columns) {
     int row, column;
     size_t i;
     size_t size;
@@ -54,7 +54,7 @@ int print_table(const char headers[][128], const char data[][128], const int row
     printf("\n");
 
     //Printing the rest of the table.
-    for (row = 0; row < rows && strcmp(data[columns * row], "") != 0; row++) {
+    for (row = 0; row < rows; row++) {
         printf("|");
         for (column = 0; column < columns; column++) {
             printf(" %s", data[columns * row + column]);

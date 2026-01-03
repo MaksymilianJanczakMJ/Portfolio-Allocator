@@ -12,7 +12,12 @@ instrument make_instrument(const char *name, double value, double target_percent
     v.name[NAME_LEN - 1] = '\0';
 
     v.value = value;
-    v.target_percentage = target_percentage;
+
+    if (target_percentage < 0) {
+        v.target_percentage = 0;
+    } else {
+        v.target_percentage = target_percentage;
+    }
 
     v.additional_percentage = 0;
     v.after_percentage = 0;
@@ -59,7 +64,7 @@ int calc_v(instrument v[], double total_value, double payment, int rows) {
         }
 
         /* Calculation of the fulfillment level for each instrument. */
-        if (v[row].after_payment_percentage == 0) {
+        if (v[row].target_percentage == 0) {
             v[row].fulfillment_level = 1;
         } else {
             v[row].fulfillment_level = v[row].after_payment_percentage / v[row].target_percentage;
@@ -181,18 +186,31 @@ void v_to_table(instrument v[], char out[][NAME_LEN], const int rows, const int 
     char str[NAME_LEN];
 
     for (row = 0; row < rows; row++) {
-        strcpy(out[columns * row], v[row].name);
+        strncpy(out[columns * row], v[row].name, NAME_LEN - 1);
+        out[columns * rows][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].value);
-        strcpy(out[columns * row + 1], str);
+        strncpy(out[columns * row + 1], str, NAME_LEN - 1);
+        out[columns * rows + 1][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].target_percentage * 100);
-        strcpy(out[columns * row + 2], str);
+        strncpy(out[columns * row + 2], str, NAME_LEN - 1);
+        out[columns * rows + 2][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].current_percentage * 100);
-        strcpy(out[columns * row + 3], str);
+        strncpy(out[columns * row + 3], str, NAME_LEN - 1);
+        out[columns * rows + 3][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].additional_value);
-        strcpy(out[columns * row + 4], str);
+        strncpy(out[columns * row + 4], str, NAME_LEN - 1);
+        out[columns * rows + 4][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].after_percentage * 100);
-        strcpy(out[columns * row + 5], str);
+        strncpy(out[columns * row + 5], str, NAME_LEN - 1);
+        out[columns * rows + 5][NAME_LEN - 1] = '\0';
+
         sprintf(str, "%.2f", v[row].value + v[row].additional_value);
-        strcpy(out[columns * row + 6], str);
+        strncpy(out[columns * row + 6], str, NAME_LEN - 1);
+        out[columns * rows + 6][NAME_LEN - 1] = '\0';
     }
 }

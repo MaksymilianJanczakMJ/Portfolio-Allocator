@@ -1,7 +1,6 @@
 #ifndef PORTFOLIO_ALLOCATOR_ALLOCATOR_H
 #define PORTFOLIO_ALLOCATOR_ALLOCATOR_H
-
-#define NAME_LEN 128
+#include "config.h"
 
 typedef struct {
     char name[NAME_LEN];
