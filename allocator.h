@@ -16,28 +16,28 @@ typedef struct {
     double additional_percentage;
     double additional_value;
     double after_percentage;
-} instrument;
+} asset;
 
 
-instrument make_instrument(const char *name, double value, double target_percentage);
+asset make_asset(const char *name, double value, double target_percentage);
 
 
-double calc_total_value(instrument v[], int rows);
+double calc_total_value(asset v[], int rows);
 
 
-int calc_v(instrument v[], double total_value, double payment, int rows);
+int calc_v(asset v[], double total_value, double contribution, int rows);
 
 
-int sort_by_fulfillment(int positions[], instrument v[], int rows);
+int sort_by_fulfillment(int positions[], asset v[], int rows);
 
 
-int allocate_payment(instrument v[], double payment, int rows);
+int allocate_contribution(asset v[], double contribution, int rows);
 
 
-void calc_v_payment(instrument v[], double total_value, double payment, int rows);
+void calc_v_contribution(asset v[], double total_value, double contribution, int rows);
 
 
-void v_to_table(instrument v[], char out[][NAME_LEN], int rows, int columns);
+void v_to_table(asset v[], char out[][NAME_LEN], int rows, int columns);
 
 
 #endif

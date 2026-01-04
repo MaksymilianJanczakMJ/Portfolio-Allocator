@@ -5,8 +5,8 @@
 #include "allocator.h"
 
 
-instrument make_instrument(const char *name, double value, double target_percentage) {
-    instrument v;
+asset make_asset(const char *name, double value, double target_percentage) {
+    asset v;
 
     strncpy(v.name, name, NAME_LEN - 1);
     v.name[NAME_LEN - 1] = '\0';
@@ -30,7 +30,7 @@ instrument make_instrument(const char *name, double value, double target_percent
 }
 
 
-double calc_total_value(instrument v[], int rows) {
+double calc_total_value(asset v[], int rows) {
     int row;
     double total_value = 0;
 
@@ -42,37 +42,37 @@ double calc_total_value(instrument v[], int rows) {
 }
 
 
-int calc_v(instrument v[], double total_value, double payment, int rows) {
+int calc_v(asset v[], double total_value, double contribution, int rows) {
     int row;
     double sum_target_percentages = 0;
 
     for (row = 0; row < rows; row++) {
         sum_target_percentages += v[row].target_percentage;
 
-        /* Calculation of the current percentage of total value(value of instruments only) for each instrument. */
+        /* Calculation of the current percentage of total value(value of asset only) for each asset. */
         if (total_value == 0) {
             v[row].current_percentage = 0;
         } else {
             v[row].current_percentage = v[row].value / total_value;
         }
 
-        /* Calculation of the percentage of total value(value of instruments + payment) for each instrument. */
-        if (total_value == 0 && payment == 0) {
+        /* Calculation of the percentage of total value(value of instruments + payment) for each asset. */
+        if (total_value == 0 && contribution == 0) {
             v[row].after_payment_percentage = 0;
         } else {
-            v[row].after_payment_percentage = v[row].value / (total_value + payment);
+            v[row].after_payment_percentage = v[row].value / (total_value + contribution);
         }
 
-        /* Calculation of the fulfillment level for each instrument. */
+        /* Calculation of the fulfillment level for each asset. */
         if (v[row].target_percentage == 0) {
             v[row].fulfillment_level = 1;
         } else {
             v[row].fulfillment_level = v[row].after_payment_percentage / v[row].target_percentage;
         }
 
-        /* Calculation of the additional value that needs to be put into each instrument to achieve or get closer to
+        /* Calculation of the additional value that needs to be put into each asset to achieve or get closer to
          the target percentage. */
-        v[row].additional_value = v[row].additional_percentage * (total_value + payment);
+        v[row].additional_value = v[row].additional_percentage * (total_value + contribution);
     }
 
     if (sum_target_percentages > 1 + 1e-12 || sum_target_percentages < 1 - 1e-12) {
@@ -84,7 +84,7 @@ int calc_v(instrument v[], double total_value, double payment, int rows) {
 }
 
 
-int sort_by_fulfillment(int positions[], instrument v[], int rows) {
+int sort_by_fulfillment(int positions[], asset v[], int rows) {
     int row;
     int stop, pos;
     int tmp;
@@ -115,13 +115,13 @@ int sort_by_fulfillment(int positions[], instrument v[], int rows) {
 }
 
 
-int allocate_payment(instrument v[], double payment, int rows) {
+int allocate_contribution(asset v[], double contribution, int rows) {
     int i, j;
     double additional_percentages, sum_additional_percentages, sum_target_percentages, total_value = 0;
     int *positions;
 
     if (rows < 1) {
-        fprintf(stderr, "Error: there must be at least 1 instrument.");
+        fprintf(stderr, "Error: there must be at least 1 asset.");
         return 1;
     }
 
@@ -132,8 +132,8 @@ int allocate_payment(instrument v[], double payment, int rows) {
     }
 
     total_value = calc_total_value(v, rows);
-    additional_percentages = payment / (payment + total_value);
-    if (calc_v(v, total_value, payment, rows)) {
+    additional_percentages = contribution / (contribution + total_value);
+    if (calc_v(v, total_value, contribution, rows)) {
         free(positions);
         return 1;
     }
@@ -166,22 +166,22 @@ int allocate_payment(instrument v[], double payment, int rows) {
         }
     }
 
-    calc_v_payment(v, total_value, payment, rows);
+    calc_v_contribution(v, total_value, contribution, rows);
     free(positions);
     return 0;
 }
 
 
-void calc_v_payment(instrument v[], double total_value, double payment, int rows) {
+void calc_v_contribution(asset v[], double total_value, double contribution, int rows) {
     int row;
     for (row = 0; row < rows; row++) {
-        v[row].additional_value = v[row].additional_percentage * (total_value + payment);
-        v[row].after_percentage = (v[row].value + v[row].additional_value) / (total_value + payment);
+        v[row].additional_value = v[row].additional_percentage * (total_value + contribution);
+        v[row].after_percentage = (v[row].value + v[row].additional_value) / (total_value + contribution);
     }
 }
 
 
-void v_to_table(instrument v[], char out[][NAME_LEN], const int rows, const int columns) {
+void v_to_table(asset v[], char out[][NAME_LEN], const int rows, const int columns) {
     int row;
     char str[NAME_LEN];
 

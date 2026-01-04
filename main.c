@@ -4,27 +4,27 @@
 
 #define COLUMNS 7
 
-/* Total amount of instruments in portfolio. */
+/* Total amount of assets in portfolio. */
 #define ROWS 5
 
 
 int main(void) {
     char table[ROWS * COLUMNS][NAME_LEN];
-    char headers[COLUMNS][NAME_LEN] = {"Instrument name", "Value", "Target [%]", "Current [%]", "Additional value", "After [%]", "After value"};
-    instrument v[ROWS];
+    char headers[COLUMNS][NAME_LEN] = {"Asset name", "Value", "Target [%]", "Current [%]", "Additional value", "After [%]", "After value"};
+    asset v[ROWS];
 
-    /* Amount of money to be distributed. */
-    const double payment = 500;
+    /* Amount of funds to be distributed. */
+    const double contribution = 500;
 
-    /* Creation of instruments. */
-    v[0] = make_instrument("Example 1.", 700, 0.65);
-    v[1] = make_instrument("Example 2.", 300, 0.10);
-    v[2] = make_instrument("Example 3.", 50, 0.10);
-    v[3] = make_instrument("Example 4.", 100, 0.15);
-    v[4] = make_instrument("Example 5.", 500, -0.05);
+    /* Creation of assets. */
+    v[0] = make_asset("Example 1.", 700, 0.65);
+    v[1] = make_asset("Example 2.", 300, 0.10);
+    v[2] = make_asset("Example 3.", 50, 0.10);
+    v[3] = make_asset("Example 4.", 100, 0.15);
+    v[4] = make_asset("Example 5.", 500, -0.05);
 
 
-    if (allocate_payment(v, payment, ROWS)) {return 1;}
+    if (allocate_contribution(v, contribution, ROWS)) {return 1;}
     v_to_table(v, table, ROWS, COLUMNS);
 
     return print_table(headers, table, ROWS, COLUMNS);
