@@ -1,5 +1,5 @@
 # Portfolio Allocator
-A C90 tool that allocates contribution between created financial asstes according to given percentages of total value using equalization algorithm.
+A C90 tool that allocates additional contribution between created financial assets according to given target percentages of total value using equalization algorithm.
 
 ## Purpose
 When investing in many different financial assets and making strategic decisions about target percentages of total portfolio value for each asset after some time we encounter an allocation problem. Since different financial assets change their value over time independently from each other they hardly ever maintain their target percentage in portfolio. Every time we want to make an additional contribution we need to think about how to allocate our funds to stay consistent with our strategy. Spliting our contribution across assets just by using target percentages as ratio to that process is naive as it does not work in broder time horizon. This tool is made to address this problem, help in allocation of new funds between financial assets in a way that is more correct than simplier methods and to rise consistency in a realization of given strategy.
@@ -59,3 +59,4 @@ User interface data formmating.
 
 ### config.h
 Configuration data.
+
