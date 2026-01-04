@@ -1,18 +1,20 @@
 # Portfolio Allocator
-A C90 tool that allocates additional contribution between created financial assets according to given target percentages of total value using equalization algorithm.
+A C90 tool that allocates an additional portfolio contribution across financial assets according to given target percentages using a contribution-only fulfillment equalization algorithm.
 
 ## Purpose
-When investing in many different financial assets and making strategic decisions about target percentages of total portfolio value for each asset after some time we encounter an allocation problem. Since different financial assets change their value over time independently from each other they hardly ever maintain their target percentage in portfolio. Every time we want to make an additional contribution we need to think about how to allocate our funds to stay consistent with our strategy. Spliting our contribution across assets just by using target percentages as ratio to that process is naive as it does not work in broder time horizon. This tool is made to address this problem, help in allocation of new funds between financial assets in a way that is more correct than simplier methods and to rise consistency in a realization of given strategy.
+This tool is made to address an allocation problem that occurs while making repeated contributions over time. As different financial assets change in value independently, their portfolio weights drift away from target percentages. Simply splitting a new contribution according to target percentages is a naive approach that does not reliably correct this drift over longer time horizons.
 
 ## Algorithm
-The algorithm is based on increasing additonal percantage of each asset by calculation of fulfillemnt level for every asset by using given contribution. Fulfillment level is a value that indicates how far from target percantage current value of an assets is. It is calculated based on given value of the asset, target percentage of the asset and total value of the portfolio including new contribution(total value of all assets combined + contribution). Total percentage of all assets in portfolio is less than 100% as contribution is contained within total value of the portfolio and has it's own percantage(additonal percentages). Algorithm aims to discribute that percentage across assets. After calculation of fulfillment level for each asset it is possible to state to which asset the funds should go in the first place and how much of the contribution percantage should be put in that asset. It is done by finding assets with the smallest fulfillemnt level and the second smallest fullfillment level. Then the fulfillment level of the asset with the smallest fullfilment level is substracted from the asset with the second smallest fulfillment level. Obtained value indicates by how much the smallest fulfillemnt can be increased before it is no longer the smallest. Using that information additonal percantage of the least fulfilled asset is increased by the value of multiplication of target percentage and substraction value. Also the same value is substracted from additional percentages. At that point there are two assets with the smallest fulfillment level. Next, the steps are repeated, but this time for three assets. Common value of the fulfillment level of the least fulfilled assets is substracted from value of the fulfillment level of the second least fulfilled asset. Again, the additional percentage of each asset is increased by the value of the multiplication. This time additional percenteges is decreased by sum of the multiplication values. This proccess continues till all assets have the same fullfilment level or substraction from additional percentages is no longer possible as it would decrease it below zero. If all assets have the same level of fullfilement level rest of the additional percentages is distributed between all assets in ratio described by target precentages of each asset. If substraction from additional percenteges is not possible at some point additonal percentage for each asset that takes part in increasing fulfillment level is adjusted in a way that sum of multiplication values is equal to adittional percentages. After this proccess additional value for each asset is calculated by multiplication of total value of portfolio and additional percentage of each asset and is displayed for the user. The algorithm only distributes given contribution betwen assets and do not sell any.
+1. The algorithm is based on the fulfillment level of each asset. It is defined as the ratio between its current percentage of total value to its target percentage. It represents how far from achieving target percentage an asset is.
+2. New contribution is allocated in least fulfilled assets first, to the point where fulfillment level meets level of better aligned assets or until the available contribution is exhausted. It can be compared to filling buckets to the same level, but the buckets differ in bottom surface area which represents target percentage. The higher the surface area the more water it takes to fill the bucket to a certain level. Also the higher the target percentage the more contribution it takes to raise the fulfillment level to a certain value.
+3. The algorithm can change the value of assets only by using the given contribution. It cannot sell assets or exchange them for each other. It would not always make percentages of assets equal to their target percentages, but it will always move them closer to the intended ratio.
 
 ## Features
 1. C90 compliance
 2. Contribution-only allocation
 3. No selling
-4. Unlimited asset creation
-5. Table data display
+4. Hardcoded asset creation
+5. Table-formatted output
 
 ## Limitations
 1. Target percentage must be non-negative.
@@ -59,4 +61,5 @@ User interface data formmating.
 
 ### config.h
 Configuration data.
+
 
