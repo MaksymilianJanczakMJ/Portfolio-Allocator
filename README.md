@@ -45,3 +45,17 @@ In "main.c" data for allocation needs to be hardcoded. Describtion of how to do 
 	| Example 3. | 50.00  | 15.00      | 3.03        | 210.53           | 12.12     | 260.53      |
 	| Example 4. | 100.00 | 10.00      | 6.06        | 73.68            | 8.08      | 173.68      |
 	| Example 5. | 500.00 | 5.00       | 30.30       | 0.00             | 23.26     | 500.00      |
+
+## Project structure
+
+### main.c
+Main file for hardcoding data and implementing other files.
+
+### allocator.c/.h
+Allocation logic.
+
+### ui.c/.h
+User interface data formmating.
+
+### config.h
+Configuration data.
