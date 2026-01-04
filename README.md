@@ -1,0 +1,27 @@
+# Portfolio Allocator
+A C90 tool that allocates contribution between created financial instruments according to given percentages of total value using equalization algorithm.
+
+## Purpose
+When investing in many different financial instruments and making strategic decisions about target percentages of total portfolio value for each instrument after some 
+time we encounter an allocation problem. Since different financial instruments change their value over time independently from each other they hardly ever maintain 
+their target percentage in portfolio. Every time we want to make an additional contribution we need to think about how to allocate our funds to stay consistent with 
+our strategy. Spliting our contribution across instruments just by using target percentages as ratio to that process is naive as it does not work in broder time 
+horizon. This tool is made to address this problem, help in allocation of new funds between financial instruments in a way that is more correct than simplier 
+methods and to rise consistency in a realization of given strategy.
+
+## Algorithm
+The algorithm is based on increasing additonal percantage of each instrument by calculation of fulfillemnt level for every instrument by using given contribution. 
+Fulfillment level is 
+a value that indicates how far from target percantage current value of an instruments is. It is calculated based on given value of the instrument, target percentage 
+of the instrument and total value of the portfolio including new contribution(total value of all instruments combined + contribution). Total percentage of 
+all instruments in portfolio is less than 100% as contribution is contained within total value of the portfolio and has it's own percantage(additonal percentages). 
+Algorithm aims to discribute that percentage across instruments.
+After calculation of fulfillment level for each instrument it is possible to state to which instrument the funds should go in the first place and how much of
+the contribution percantage should be put in that instrument. It is done by finding instruments with the smallest fulfillemnt level and the second smallest fullfillment level. Then the fulfillment level 
+of the instrument with the smallest fullfilment level is substracted from the instrument with the second smallest fulfillment level. Obtained value indicates by how
+much the smallest fulfillemnt can be increased before it is no longer the smallest. Using that information additonal percantage of the least fulfilled instrument is 
+increased by the value of multiplication of target percentage and substraction value. Also the same value is substracted from additional percentages. At that point there
+are two instruments with the smallest fulfillment level. Next, the steps are repeated, but this time for three instruments. Common value of the fulfillment level of 
+the least fulfilled instruments is substracted from value of the fulfillment level of the second least fulfilled instrument. Again, the additional percentage of each 
+instrument is increased by the value of the multiplication. This time additional percenteges is decreased by sum of the multiplication values. This proccess continues 
+till the 
