@@ -17,11 +17,11 @@ int main(void) {
     const double contribution = 500;
 
     /* Creation of assets. */
-    v[0] = make_asset("Example 1.", 700, 0.65);
-    v[1] = make_asset("Example 2.", 300, 0.10);
-    v[2] = make_asset("Example 3.", 50, 0.10);
-    v[3] = make_asset("Example 4.", 100, 0.15);
-    v[4] = make_asset("Example 5.", 500, -0.05);
+    v[0] = make_asset("Example 1.", 700, 0.50);
+    v[1] = make_asset("Example 2.", 300, 0.20);
+    v[2] = make_asset("Example 3.", 50, 0.15);
+    v[3] = make_asset("Example 4.", 100, 0.10);
+    v[4] = make_asset("Example 5.", 500, 0.05);
 
 
     if (allocate_contribution(v, contribution, ROWS)) {return 1;}
