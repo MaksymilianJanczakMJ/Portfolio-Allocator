@@ -53,7 +53,7 @@ int print_table(const char headers[][NAME_LEN], const char data[][NAME_LEN], con
     }
     printf("\n");
 
-    //Printing the rest of the table.
+    /* Printing the rest of the table. */
     for (row = 0; row < rows; row++) {
         printf("|");
         for (column = 0; column < columns; column++) {
