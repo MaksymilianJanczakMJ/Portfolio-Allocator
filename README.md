@@ -17,16 +17,14 @@ This tool is made to address an allocation problem that occurs while making repe
 5. Table-formatted output
 
 ## Limitations
-1. Target percentage must be non-negative.
-2. Allocation does not include additional fees that may come with purchase of certain assets.
-3. Sum of target percentages of all assets must be equal 100%.
-4. Algorithm is not selling assets.
-5. Value of each asset must be non-negative.
-6. Amount of assets needs to be given.
-7. Data for allocation needs to be hardcoded.
+1. Target percentages must be non-negative.
+2. Allocation does not include transaction fees.
+3. Target percentages of all assets must sum to 100%.
+4. Value of each asset must be non-negative.
+5. Number of assets and data for allocation need to be hardcoded.
 
 ## Usage
-In "main.c" data for allocation needs to be hardcoded. Describtion of how to do it is there.
+In `main.c` data for allocation must be hardcoded.
 
 ### Example:
 
@@ -51,15 +49,22 @@ In "main.c" data for allocation needs to be hardcoded. Describtion of how to do 
 ## Project structure
 
 ### main.c
-Main file for hardcoding data and implementing other files.
+The program entry point for hardcoding data and using other files.
 
 ### allocator.c/.h
-Allocation logic.
+Allocation algorithm logic.
 
 ### ui.c/.h
-User interface data formmating.
+User interface data formatting.
 
 ### config.h
 Configuration data.
 
+## Build
+Program is written in ANSI C (C90) and can be compiled by GCC.
 
+### Example build command:
+	gcc -std=c90 -Wall -Wextra -pedantic -O2 main.c allocator.c ui.c -o portfolio_allocator
+
+### Example run command:
+	./portfolio_allocator.exe
