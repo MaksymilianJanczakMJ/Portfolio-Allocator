@@ -61,10 +61,11 @@ User interface data formatting.
 Configuration data.
 
 ## Build
-Program is written in ANSI C (C90) and can be compiled by GCC.
+The program is written in ANSI C (C90) and can be compiled using GCC.
 
-### Example build command:
+### Example build command
 	gcc -std=c90 -Wall -Wextra -pedantic -O2 main.c allocator.c ui.c -o portfolio_allocator
 
-### Example run command:
-	./portfolio_allocator.exe
+### Example run command
+	./portfolio_allocator
+
