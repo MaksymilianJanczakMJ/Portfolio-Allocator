@@ -7,12 +7,12 @@ typedef struct {
     double value;
     double target_percentage;
 
-    // Computed data
+    /* Computed data */
     double current_percentage;
     double after_payment_percentage;
     double fulfillment_level;
 
-    // Results of the allocation
+    /* Results of the allocation */
     double additional_percentage;
     double additional_value;
     double after_percentage;

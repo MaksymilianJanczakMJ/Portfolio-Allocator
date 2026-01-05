@@ -23,9 +23,9 @@ int main(void) {
     v[3] = make_asset("Example 4.", 100, 0.10);
     v[4] = make_asset("Example 5.", 500, 0.05);
 
-
     if (allocate_contribution(v, contribution, ROWS)) {return 1;}
     v_to_table(v, table, ROWS, COLUMNS);
+    print_table(headers, table, ROWS, COLUMNS);
 
-    return print_table(headers, table, ROWS, COLUMNS);
+    return 0;
 }

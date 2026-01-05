@@ -5,7 +5,7 @@
 #include "ui.h"
 
 
-int print_table(const char headers[][NAME_LEN], const char data[][NAME_LEN], const int rows, const int columns) {
+int print_table(char headers[][NAME_LEN], char data[][NAME_LEN], const int rows, const int columns) {
     int row, column;
     size_t i;
     size_t size;

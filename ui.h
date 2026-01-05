@@ -3,8 +3,8 @@
 #include "config.h"
 
 
-int print_table(const char headers[][NAME_LEN],
-                const char data[][NAME_LEN],
+int print_table(char headers[][NAME_LEN],
+                char data[][NAME_LEN],
                 int rows,
                 int columns);
 
