@@ -181,36 +181,39 @@ void calc_v_contribution(asset v[], double total_value, double contribution, int
 }
 
 
-void v_to_table(asset v[], char out[][NAME_LEN], const int rows, const int columns) {
+void v_to_table(asset v[], char *table_out[][NAME_LEN], const int rows) {
     int row;
     char str[NAME_LEN];
+    char table[rows * COLUMNS][NAME_LEN];
 
     for (row = 0; row < rows; row++) {
-        strncpy(out[columns * row], v[row].name, NAME_LEN);
-        out[columns * rows][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row], v[row].name, NAME_LEN);
+        table[COLUMNS * rows][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].value);
-        strncpy(out[columns * row + 1], str, NAME_LEN);
-        out[columns * rows + 1][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 1], str, NAME_LEN);
+        table[COLUMNS * rows + 1][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].target_percentage * 100);
-        strncpy(out[columns * row + 2], str, NAME_LEN);
-        out[columns * rows + 2][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 2], str, NAME_LEN);
+        table[COLUMNS * rows + 2][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].current_percentage * 100);
-        strncpy(out[columns * row + 3], str, NAME_LEN);
-        out[columns * rows + 3][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 3], str, NAME_LEN);
+        table[COLUMNS * rows + 3][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].additional_value);
-        strncpy(out[columns * row + 4], str, NAME_LEN);
-        out[columns * rows + 4][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 4], str, NAME_LEN);
+        table[COLUMNS * rows + 4][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].after_percentage * 100);
-        strncpy(out[columns * row + 5], str, NAME_LEN);
-        out[columns * rows + 5][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 5], str, NAME_LEN);
+        table[COLUMNS * rows + 5][NAME_LEN - 1] = '\0';
 
         sprintf(str, "%.2f", v[row].value + v[row].additional_value);
-        strncpy(out[columns * row + 6], str, NAME_LEN);
-        out[columns * rows + 6][NAME_LEN - 1] = '\0';
+        strncpy(table[COLUMNS * row + 6], str, NAME_LEN);
+        table[COLUMNS * rows + 6][NAME_LEN - 1] = '\0';
     }
+
+    memcpy(table_out, table, rows * COLUMNS * NAME_LEN);
 }
