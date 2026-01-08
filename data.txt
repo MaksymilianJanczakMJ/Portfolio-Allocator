@@ -1,2 +1,2 @@
-Example 1.;1300;0.6
-Example 2.;400;0.4
+Example 1.;1300.25;0.6
+Example 2.;400.5;0.4

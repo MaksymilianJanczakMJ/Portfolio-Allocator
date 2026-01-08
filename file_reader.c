@@ -8,7 +8,11 @@
 
 #include "allocator.h"
 
-int string_to_double(char in[NAME_LEN], double *out) {
+int string_to_double(
+    char in[NAME_LEN],
+    double *out
+    ) {
+
     char *signs;
     double value;
 
@@ -35,7 +39,13 @@ int string_to_double(char in[NAME_LEN], double *out) {
 }
 
 
-int word_till_sign(const char in[3 * NAME_LEN], const char sign, char *word_out, char *rest_out) {
+int word_till_sign(
+    const char in[3 * NAME_LEN],
+    const char sign,
+    char *word_out,
+    char *rest_out
+    ) {
+
     int word_len = 0, rest_len = 0;
     int i;
     char word[NAME_LEN], rest[2 * NAME_LEN];
@@ -84,7 +94,11 @@ int word_till_sign(const char in[3 * NAME_LEN], const char sign, char *word_out,
 }
 
 
-int check_file_len(int *file_len_out, char path[NAME_LEN]) {
+int check_file_len(
+    int *file_len_out,
+    char path[NAME_LEN]
+    ) {
+
     int file_len = 0;
     char line[3 * NAME_LEN];
     FILE *file = fopen(path, "r");
@@ -105,7 +119,11 @@ int check_file_len(int *file_len_out, char path[NAME_LEN]) {
 }
 
 
-int read_from_file(asset *v_out, char path[NAME_LEN]) {
+int read_from_file(
+    asset *v_out,
+    char path[NAME_LEN]
+    ) {
+
     int row = 0, i;
     int file_len;
     char line[3 * NAME_LEN];

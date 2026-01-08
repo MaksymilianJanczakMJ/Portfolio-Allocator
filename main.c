@@ -3,15 +3,13 @@
 #include "config.h"
 #include "file_reader.h"
 
-#include <stdio.h>
 #include <stdlib.h>
 #define ROWS 5
 
 
 int main(void) {
-    int i;
     char path[NAME_LEN] = "data.txt";
-    char *table[NAME_LEN];
+    char *table;
     char headers[COLUMNS][NAME_LEN] = {"Asset name", "Value", "Target [%]", "Current [%]", "Additional value", "After [%]", "After value"};
     int rows;
     asset *v;
@@ -26,18 +24,17 @@ int main(void) {
     v = malloc(rows * sizeof *v);
     read_from_file(v, path);
 
-    for (i = 0; i < rows; i++) {
-        printf("%s\n", v[i].name);
-        printf("%f\n", v[i].value);
-        printf("%f\n", v[i].target_percentage);
+    if (allocate_contribution(v, contribution, rows)) {
+        return 1;
     }
 
-    if (allocate_contribution(v, contribution, rows)) {return 1;}
-    //v_to_table(v, &table, rows);
+    table = malloc(rows * COLUMNS * NAME_LEN * sizeof *table);
+    v_to_table(v, table, rows);
 
-    //printf("%s\n", table[0]);
+    print_table(headers, table, rows, COLUMNS);
 
-    //print_table(headers, table, rows, COLUMNS);
+    free(v);
+    free(table);
 
     return 0;
 }

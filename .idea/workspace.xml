@@ -29,15 +29,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64fd08cb-56f4-47d8-9802-c0b81df99777" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_reader.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/file_reader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allocator.c" beforeDir="false" afterPath="$PROJECT_DIR$/allocator.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/allocator.h" beforeDir="false" afterPath="$PROJECT_DIR$/allocator.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_reader.c" beforeDir="false" afterPath="$PROJECT_DIR$/file_reader.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_reader.h" beforeDir="false" afterPath="$PROJECT_DIR$/file_reader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui.c" beforeDir="false" afterPath="$PROJECT_DIR$/ui.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui.h" beforeDir="false" afterPath="$PROJECT_DIR$/ui.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +156,8 @@
       <workItem from="1767628665719" duration="31000" />
       <workItem from="1767628708869" duration="3114000" />
       <workItem from="1767647639329" duration="13528000" />
+      <workItem from="1767818474447" duration="10000" />
+      <workItem from="1767897011391" duration="5592000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />

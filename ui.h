@@ -4,7 +4,7 @@
 
 
 int print_table(char headers[][NAME_LEN],
-                char data[][NAME_LEN],
+                char table[],
                 int rows,
                 int columns);
 

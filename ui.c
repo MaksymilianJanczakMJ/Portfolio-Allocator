@@ -5,8 +5,14 @@
 #include "ui.h"
 
 
-int print_table(char headers[][NAME_LEN], char data[][NAME_LEN], const int rows, const int columns) {
-    int row, column;
+int print_table(
+    char headers[][NAME_LEN],
+    char table[],
+    const int rows,
+    const int columns
+    ) {
+
+    int chr, column, row;
     size_t i;
     size_t size;
     size_t *sizes;
@@ -27,8 +33,13 @@ int print_table(char headers[][NAME_LEN], char data[][NAME_LEN], const int rows,
         sizes[column] = strlen(headers[column]);
 
         for (row = 0; row < rows; row++) {
-            if (sizes[column] < strlen(data[columns * row + column])) {
-                sizes[column] = strlen(data[columns * row + column]);
+            chr = 0;
+            while (table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] != '\0') {
+                chr++;
+            }
+
+            if (sizes[column] < chr) {
+                sizes[column] = chr;
             }
         }
     }
@@ -57,8 +68,13 @@ int print_table(char headers[][NAME_LEN], char data[][NAME_LEN], const int rows,
     for (row = 0; row < rows; row++) {
         printf("|");
         for (column = 0; column < columns; column++) {
-            printf(" %s", data[columns * row + column]);
-            size = sizes[column] - strlen(data[columns * row + column]);
+            chr = 0;
+            printf(" ");
+            while (table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] != '\0') {
+                printf("%c", table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row]);
+                chr++;
+            }
+            size = sizes[column] - chr;
             for (i = 0; i < size; i++) {printf(" ");}
             printf(" |");
         }

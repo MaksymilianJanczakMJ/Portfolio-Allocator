@@ -5,7 +5,12 @@
 #include "allocator.h"
 
 
-asset make_asset(const char *name, double value, double target_percentage) {
+asset make_asset(
+    const char *name,
+    double value,
+    double target_percentage
+    ) {
+
     asset v;
 
     strncpy(v.name, name, NAME_LEN - 1);
@@ -30,7 +35,11 @@ asset make_asset(const char *name, double value, double target_percentage) {
 }
 
 
-double calc_total_value(asset v[], int rows) {
+double calc_total_value(
+    asset v[],
+    int rows
+    ) {
+
     int row;
     double total_value = 0;
 
@@ -42,7 +51,13 @@ double calc_total_value(asset v[], int rows) {
 }
 
 
-int calc_v(asset v[], double total_value, double contribution, int rows) {
+int calc_v(
+    asset v[],
+    double total_value,
+    double contribution,
+    int rows
+    ) {
+
     int row;
     double sum_target_percentages = 0;
 
@@ -84,7 +99,12 @@ int calc_v(asset v[], double total_value, double contribution, int rows) {
 }
 
 
-int sort_by_fulfillment(int positions[], asset v[], int rows) {
+int sort_by_fulfillment(
+    int positions[],
+    asset v[],
+    int rows
+    ) {
+
     int row;
     int stop, pos;
     int tmp;
@@ -115,7 +135,12 @@ int sort_by_fulfillment(int positions[], asset v[], int rows) {
 }
 
 
-int allocate_contribution(asset v[], double contribution, int rows) {
+int allocate_contribution(
+    asset v[],
+    double contribution,
+    int rows
+    ) {
+
     int i, j;
     double additional_percentages, sum_additional_percentages, sum_target_percentages, total_value = 0;
     int *positions;
@@ -172,7 +197,13 @@ int allocate_contribution(asset v[], double contribution, int rows) {
 }
 
 
-void calc_v_contribution(asset v[], double total_value, double contribution, int rows) {
+void calc_v_contribution(
+    asset v[],
+    double total_value,
+    double contribution,
+    int rows
+    ) {
+
     int row;
     for (row = 0; row < rows; row++) {
         v[row].additional_value = v[row].additional_percentage * (total_value + contribution);
@@ -181,38 +212,100 @@ void calc_v_contribution(asset v[], double total_value, double contribution, int
 }
 
 
-void v_to_table(asset v[], char *table_out[][NAME_LEN], const int rows) {
-    int row;
+void v_to_table(
+    asset v[],
+    char *table_out,
+    const int rows
+    ) {
+
+    int row, column;
+    char chr;
     char str[NAME_LEN];
-    char table[rows * COLUMNS][NAME_LEN];
+    char table[rows * COLUMNS * NAME_LEN];
 
     for (row = 0; row < rows; row++) {
-        strncpy(table[COLUMNS * row], v[row].name, NAME_LEN);
-        table[COLUMNS * rows][NAME_LEN - 1] = '\0';
+        /*
+            1. Column.
+        */
+        column = 0;
+        chr = 0;
+        while (v[row].name[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = v[row].name[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            2. Column.
+        */
+        column = 1;
+        chr = 0;
         sprintf(str, "%.2f", v[row].value);
-        strncpy(table[COLUMNS * row + 1], str, NAME_LEN);
-        table[COLUMNS * rows + 1][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            3. Column.
+        */
+        column = 2;
+        chr = 0;
         sprintf(str, "%.2f", v[row].target_percentage * 100);
-        strncpy(table[COLUMNS * row + 2], str, NAME_LEN);
-        table[COLUMNS * rows + 2][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            4. Column.
+        */
+        column = 3;
+        chr = 0;
         sprintf(str, "%.2f", v[row].current_percentage * 100);
-        strncpy(table[COLUMNS * row + 3], str, NAME_LEN);
-        table[COLUMNS * rows + 3][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            5. Column.
+        */
+        column = 4;
+        chr = 0;
         sprintf(str, "%.2f", v[row].additional_value);
-        strncpy(table[COLUMNS * row + 4], str, NAME_LEN);
-        table[COLUMNS * rows + 4][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            6. Column.
+        */
+        column = 5;
+        chr = 0;
         sprintf(str, "%.2f", v[row].after_percentage * 100);
-        strncpy(table[COLUMNS * row + 5], str, NAME_LEN);
-        table[COLUMNS * rows + 5][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
 
+        /*
+            7. Column.
+        */
+        column = 6;
+        chr = 0;
         sprintf(str, "%.2f", v[row].value + v[row].additional_value);
-        strncpy(table[COLUMNS * row + 6], str, NAME_LEN);
-        table[COLUMNS * rows + 6][NAME_LEN - 1] = '\0';
+        while (str[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+            chr++;
+        }
+        table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
     }
 
     memcpy(table_out, table, rows * COLUMNS * NAME_LEN);
