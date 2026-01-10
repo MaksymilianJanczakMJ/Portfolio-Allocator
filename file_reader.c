@@ -5,7 +5,6 @@
 
 #include "config.h"
 #include "file_reader.h"
-
 #include "allocator.h"
 
 int string_to_double(
@@ -30,7 +29,7 @@ int string_to_double(
     }
 
     if (*signs != '\0' && *signs != '\n') {
-        fprintf(stderr, "Error in string_to_double() function: invalid characters in input \"%s\"\n", signs);
+        fprintf(stderr, "Error in string_to_double() function: invalid characters in input \"%s\".\n", signs);
         return 1;
     }
 
@@ -113,7 +112,7 @@ int check_file_len(
 
     fclose(file);
 
-    *file_len_out = file_len;
+    *file_len_out = file_len - 1;
 
     return 0;
 }
@@ -121,6 +120,7 @@ int check_file_len(
 
 int read_from_file(
     asset *v_out,
+    double *contribution_out,
     char path[NAME_LEN]
     ) {
 
@@ -128,6 +128,7 @@ int read_from_file(
     int file_len;
     char line[3 * NAME_LEN];
     char rest[2 * NAME_LEN];
+    char str_contribution[NAME_LEN];
     char name[NAME_LEN];
     char str_value[NAME_LEN];
     char str_target_percentage[NAME_LEN];
@@ -148,35 +149,49 @@ int read_from_file(
     }
 
     while (fgets(line, sizeof line, file) != NULL) {
-        if (word_till_sign(line, ';', name, rest)) {
-            fprintf(stderr, "Error in read_from_file() function: in name in the [%d] row of \"%s\" file.\n", row + 1, path);
-            free(v);
-            return 1;
+        if (row == 0) {
+            if (word_till_sign(line, ';', str_contribution, rest)) {
+                fprintf(stderr, "Error in read_from_file() function: in value of contribution in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+            if (string_to_double(str_contribution, contribution_out)) {
+                fprintf(stderr, "Error in read_from_file() function: in value of contribution in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+        } else {
+            if (word_till_sign(line, ';', name, rest)) {
+                fprintf(stderr, "Error in read_from_file() function: in name in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+
+            if (word_till_sign(rest, ';', str_value, rest)) {
+                fprintf(stderr, "Error in read_from_file() function: in value in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+            if (string_to_double(str_value, &value)) {
+                fprintf(stderr, "Error in read_from_file() function: in value in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+
+            if (word_till_sign(rest, ';', str_target_percentage, rest)) {
+                fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+            if (string_to_double(str_target_percentage, &target_percentage)) {
+                fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
+                free(v);
+                return 1;
+            }
+
+            v[row - 1] = make_asset(name, value, target_percentage);
         }
 
-        if (word_till_sign(rest, ';', str_value, rest)) {
-            fprintf(stderr, "Error in read_from_file() function: in value in the [%d] row of \"%s\" file.\n", row + 1, path);
-            free(v);
-            return 1;
-        }
-        if (string_to_double(str_value, &value)) {
-            fprintf(stderr, "Error in read_from_file() function: in value in the [%d] row of \"%s\" file.\n", row + 1, path);
-            free(v);
-            return 1;
-        }
-
-        if (word_till_sign(rest, ';', str_target_percentage, rest)) {
-            fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
-            free(v);
-            return 1;
-        }
-        if (string_to_double(str_target_percentage, &target_percentage)) {
-            fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
-            free(v);
-            return 1;
-        }
-
-        v[row] = make_asset(name, value, target_percentage);
         row++;
     }
 

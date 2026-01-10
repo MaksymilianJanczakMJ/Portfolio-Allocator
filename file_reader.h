@@ -25,6 +25,7 @@ int check_file_len(
 
 int read_from_file(
     asset *v_out,
+    double *contribution_out,
     char path[NAME_LEN]
     );
 

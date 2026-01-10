@@ -4,25 +4,22 @@
 #include "file_reader.h"
 
 #include <stdlib.h>
-#define ROWS 5
 
 
 int main(void) {
-    char path[NAME_LEN] = "data.txt";
+    char path[NAME_LEN] = "my_data.txt";
     char *table;
     char headers[COLUMNS][NAME_LEN] = {"Asset name", "Value", "Target [%]", "Current [%]", "Additional value", "After [%]", "After value"};
     int rows;
+    double contribution;
     asset *v;
-
-    /* Amount of funds to be distributed. */
-    const double contribution = 500;
 
     if (check_file_len(&rows, path)) {
         return 1;
     }
 
     v = malloc(rows * sizeof *v);
-    read_from_file(v, path);
+    read_from_file(v, &contribution, path);
 
     if (allocate_contribution(v, contribution, rows)) {
         return 1;
