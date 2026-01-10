@@ -5,9 +5,11 @@
 
 #include <stdlib.h>
 
+#include "file_writer.h"
+
 
 int main(void) {
-    char path[NAME_LEN] = "my_data.txt";
+    char path[NAME_LEN] = "data.txt";
     char *table;
     char headers[COLUMNS][NAME_LEN] = {"Asset name", "Value", "Target [%]", "Current [%]", "Additional value", "After [%]", "After value"};
     int rows;
@@ -29,6 +31,8 @@ int main(void) {
     v_to_table(v, table, rows);
 
     print_table(headers, table, rows, COLUMNS);
+
+    write_to_file(v, "out.txt", rows);
 
     free(v);
     free(table);

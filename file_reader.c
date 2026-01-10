@@ -7,6 +7,7 @@
 #include "file_reader.h"
 #include "allocator.h"
 
+
 int string_to_double(
     char in[NAME_LEN],
     double *out
@@ -138,10 +139,8 @@ int read_from_file(
     FILE *file = fopen(path, "r");
 
     check_file_len(&file_len, path);
-
     v = malloc(file_len * sizeof *v);
 
-    file = fopen(path, "r");
     if (file == NULL) {
         fprintf(stderr, "Error in read_from_file() function: could not open \"%s\" file.\n", path);
         free(v);
@@ -197,6 +196,7 @@ int read_from_file(
 
     memcpy(v_out, v, file_len * sizeof *v);
 
+    fclose(file);
     free(v);
     return 0;
 }

@@ -11,4 +11,6 @@ add_executable(Portfolio_allocator
         ui.h
         config.h
         file_reader.c
-        file_reader.h)
+        file_reader.h
+        file_writer.c
+        file_writer.h)

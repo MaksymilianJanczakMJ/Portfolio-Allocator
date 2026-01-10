@@ -220,7 +220,7 @@ void v_to_table(
 
     int row, column;
     char chr;
-    char str[NAME_LEN];
+    char string[NAME_LEN];
     char table[rows * COLUMNS * NAME_LEN];
 
     for (row = 0; row < rows; row++) {
@@ -240,9 +240,9 @@ void v_to_table(
         */
         column = 1;
         chr = 0;
-        sprintf(str, "%.2f", v[row].value);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].value);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
@@ -252,9 +252,9 @@ void v_to_table(
         */
         column = 2;
         chr = 0;
-        sprintf(str, "%.2f", v[row].target_percentage * 100);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].target_percentage * 100);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
@@ -264,9 +264,9 @@ void v_to_table(
         */
         column = 3;
         chr = 0;
-        sprintf(str, "%.2f", v[row].current_percentage * 100);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].current_percentage * 100);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
@@ -276,9 +276,9 @@ void v_to_table(
         */
         column = 4;
         chr = 0;
-        sprintf(str, "%.2f", v[row].additional_value);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].additional_value);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
@@ -288,9 +288,9 @@ void v_to_table(
         */
         column = 5;
         chr = 0;
-        sprintf(str, "%.2f", v[row].after_percentage * 100);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].after_percentage * 100);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';
@@ -300,9 +300,9 @@ void v_to_table(
         */
         column = 6;
         chr = 0;
-        sprintf(str, "%.2f", v[row].value + v[row].additional_value);
-        while (str[chr] != '\0') {
-            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = str[chr];
+        sprintf(string, "%.2f", v[row].value + v[row].additional_value);
+        while (string[chr] != '\0') {
+            table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = string[chr];
             chr++;
         }
         table[chr + NAME_LEN * column + NAME_LEN * COLUMNS * row] = '\0';

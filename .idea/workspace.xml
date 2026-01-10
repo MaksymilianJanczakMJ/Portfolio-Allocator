@@ -29,9 +29,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64fd08cb-56f4-47d8-9802-c0b81df99777" name="Changes" comment="Commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allocator.c" beforeDir="false" afterPath="$PROJECT_DIR$/allocator.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file_reader.c" beforeDir="false" afterPath="$PROJECT_DIR$/file_reader.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_reader.h" beforeDir="false" afterPath="$PROJECT_DIR$/file_reader.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,8 +117,16 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\maksy\CLionProjects\Portfolio_allocator" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\maksy\CLionProjects\Portfolio_allocator" />
+    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Portfolio_allocator" type="CMakeRunConfiguration" factoryName="Application" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Portfolio_allocator" TARGET_NAME="Portfolio_allocator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Portfolio_allocator" RUN_TARGET_NAME="Portfolio_allocator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -153,7 +162,7 @@
       <workItem from="1767647639329" duration="13528000" />
       <workItem from="1767818474447" duration="10000" />
       <workItem from="1767897011391" duration="5592000" />
-      <workItem from="1768040265380" duration="10026000" />
+      <workItem from="1768040265380" duration="15828000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
@@ -243,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767628770227</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1768075555812</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1768075555812</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
