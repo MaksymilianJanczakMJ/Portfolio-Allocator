@@ -13,43 +13,49 @@ This tool is made to address an allocation problem that occurs while making repe
 1. C90 compliance
 2. Contribution-only allocation
 3. No selling
-4. Hardcoded asset creation
-5. Table-formatted output
+4. In-file contribution declarationa and asset creation
+5. Output in file-format and table-format for terminal
+6. If the target percentage is negative, it will be set to zero.
+7. If the asset value is negative, it will be set to zero.
 
 ## Limitations
-1. Target percentages must be non-negative.
-2. Allocation does not include transaction fees.
-3. Target percentages of all assets must sum to 100%.
-4. Value of each asset must be non-negative.
-5. Number of assets and data for allocation need to be hardcoded.
+1. Allocation does not include transaction fees.
+2. Target percentages of all assets must sum to 100%.
 
 ## Usage
-In `main.c` data for allocation must be hardcoded.
+1. In `data.txt` data for allocation must be declared.
+2. In the file first line represents the contribution value.
+3. Rest of the lines represent assets, one for each line.
+4. The Assets are described as follows `asset_name;value;target_percentage`. 
 
 ### Example:
 
-#### Input:
-	#define ROWS 5
-	const double contribution = 500;
-	v[0] = make_asset("Example 1.", 700, 0.50);
-	v[1] = make_asset("Example 2.", 300, 0.20);
-	v[2] = make_asset("Example 3.", 50, 0.15);
-	v[3] = make_asset("Example 4.", 100, 0.10);
-	v[4] = make_asset("Example 5.", 500, 0.05);
+#### Input `data.txt`
+	1000
+	Example 1.;1300;0.4
+	Example 2.;400;0.25
+	Example 3.;700;0.15
+	Example 4.;200;0.2
 
-#### Output:
-	| Asset name | Value  | Target [%] | Current [%] | Additional value | After [%] | After value |
-	|============|========|============|=============|==================|===========|=============|
-	| Example 1. | 700.00 | 50.00      | 42.42       | 168.42           | 40.39     | 868.42      |
-	| Example 2. | 300.00 | 20.00      | 18.18       | 47.37            | 16.16     | 347.37      |
-	| Example 3. | 50.00  | 15.00      | 3.03        | 210.53           | 12.12     | 260.53      |
-	| Example 4. | 100.00 | 10.00      | 6.06        | 73.68            | 8.08      | 173.68      |
-	| Example 5. | 500.00 | 5.00       | 30.30       | 0.00             | 23.26     | 500.00      |
+#### Terminal output
+	| Asset name | Value   | Target [%] | Current [%] | Additional value | After [%] | After value |
+	|============|=========|============|=============|==================|===========|=============|
+	| Example 1. | 1300.00 | 40.00      | 50.00       | 64.71            | 37.91     | 1364.71     |
+	| Example 2. | 400.00  | 25.00      | 15.38       | 452.94           | 23.69     | 852.94      |
+	| Example 3. | 700.00  | 15.00      | 26.92       | 0.00             | 19.44     | 700.00      |
+	| Example 4. | 200.00  | 20.00      | 7.69        | 482.35           | 18.95     | 682.35      |
+	Total value after contribution: 3600.00.
+
+#### File output `out.txt`
+	Example 1.;0.500000;64.71;0.379085;1364.71;
+	Example 2.;0.153846;452.94;0.236928;852.94;
+	Example 3.;0.269231;0.00;0.194444;700.00;
+	Example 4.;0.076923;482.35;0.189542;682.35;
 
 ## Project structure
 
 ### main.c
-The program entry point for hardcoding data and using other files.
+The program entry point for using other files.
 
 ### allocator.c/.h
 Allocation algorithm logic.
@@ -58,7 +64,14 @@ Allocation algorithm logic.
 User interface data formatting.
 
 ### config.h
-Configuration data.
+Configuration data and declaration of structures and unions.
+
+### file_reader.c/.h
+File reading and data formating algorithm.
+
+### file_writer.c/.h
+After-allocation data to file writing algorithm.
+
 
 ## Build
 The program is written in ANSI C (C90) and can be compiled using GCC.
@@ -68,4 +81,5 @@ The program is written in ANSI C (C90) and can be compiled using GCC.
 
 ### Example run command
 	./portfolio_allocator
+
 
