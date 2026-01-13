@@ -179,6 +179,9 @@ int read_from_file(
                 free(v);
                 return 1;
             }
+            if (value < 0) {
+                value = 0;
+            }
 
             if (word_till_sign(rest, ';', str_target_percentage, rest)) {
                 fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
@@ -189,6 +192,9 @@ int read_from_file(
                 fprintf(stderr, "Error in read_from_file() function: in target percentage in the [%d] row of \"%s\" file.\n", row + 1, path);
                 free(v);
                 return 1;
+            }
+            if (target_percentage < 0) {
+                target_percentage = 0;
             }
 
             v[row - 1] = make_asset(name, value, target_percentage);
