@@ -4,7 +4,6 @@
 #include "file_reader.h"
 
 #include <stdlib.h>
-
 #include "file_writer.h"
 
 
@@ -21,7 +20,9 @@ int main(void) {
     }
 
     v = malloc(rows * sizeof *v);
-    read_from_file(v, &contribution, path);
+    if (read_from_file(v, &contribution, path)) {
+        return 1;
+    }
 
     if (allocate_contribution(v, contribution, rows)) {
         return 1;

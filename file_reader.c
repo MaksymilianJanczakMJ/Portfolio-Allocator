@@ -125,7 +125,7 @@ int read_from_file(
     char path[NAME_LEN]
     ) {
 
-    int row = 0, i;
+    int row = 0;
     int file_len;
     char line[3 * NAME_LEN];
     char rest[2 * NAME_LEN];
@@ -137,17 +137,17 @@ int read_from_file(
     double target_percentage;
     asset *v;
     FILE *file = fopen(path, "r");
+    if (file == NULL) {
+        fprintf(stderr, "Error in read_from_file() function: could not open \"%s\" file.\n", path);
+        return 1;
+    }
 
     check_file_len(&file_len, path);
     v = malloc(file_len * sizeof *v);
 
-    if (file == NULL) {
-        fprintf(stderr, "Error in read_from_file() function: could not open \"%s\" file.\n", path);
-        free(v);
-        return 1;
-    }
-
+    /* Reading data from the file. */
     while (fgets(line, sizeof line, file) != NULL) {
+        /* Reading the value of the contribution from the 1st line of the file. */
         if (row == 0) {
             if (word_till_sign(line, ';', str_contribution, rest)) {
                 fprintf(stderr, "Error in read_from_file() function: in value of contribution in the [%d] row of \"%s\" file.\n", row + 1, path);
@@ -159,7 +159,10 @@ int read_from_file(
                 free(v);
                 return 1;
             }
-        } else {
+        }
+
+        /* Reading data from the rest of the file. */
+        else {
             if (word_till_sign(line, ';', name, rest)) {
                 fprintf(stderr, "Error in read_from_file() function: in name in the [%d] row of \"%s\" file.\n", row + 1, path);
                 free(v);

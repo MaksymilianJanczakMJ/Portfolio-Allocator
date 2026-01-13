@@ -11,6 +11,7 @@ int write_to_file(
     int rows
     ) {
 
+    str_or_dbl total_value;
     int row;
     char string[NAME_LEN];
     FILE *file = fopen(path, "w");
@@ -19,6 +20,7 @@ int write_to_file(
         return 1;
     }
 
+    /* Writing data to the file. */
     for (row = 0; row < rows; row++) {
         fwrite(v[row].name, 1, strlen(v[row].name), file);
         fwrite(";", 1, 1, file);
@@ -43,6 +45,15 @@ int write_to_file(
     }
 
     fclose(file);
+
+    /* Usage of the union. */
+    total_value.integer = 0;
+    for (row = 0; row < rows; row++) {
+        total_value.integer += v[row].value + v[row].additional_value;
+    }
+    sprintf(string, "%.2f", total_value.integer);
+    strncpy(total_value.string, string, NAME_LEN * sizeof (char));
+    printf("Total value after contribution: %s.\n", total_value.string);
 
     return 0;
 }
