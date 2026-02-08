@@ -45,6 +45,8 @@ This tool is made to address an allocation problem that occurs while making repe
 	| Example 3. | 700.00  | 15.00      | 26.92       | 0.00             | 19.44     | 700.00      |
 	| Example 4. | 200.00  | 20.00      | 7.69        | 482.35           | 18.95     | 682.35      |
 	Total value after contribution: 3600.00.
+    
+    Process finished with exit code 0
 
 #### File output `out.txt`
 	Example 1.;0.500000;64.71;0.379085;1364.71;
