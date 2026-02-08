@@ -145,8 +145,8 @@ int allocate_contribution(
     double additional_percentages, sum_additional_percentages, sum_target_percentages, total_value = 0;
     int *positions;
 
-    if (rows < 1) {
-        fprintf(stderr, "Error: there must be at least 1 asset.");
+    if (rows < 2) {
+        fprintf(stderr, "Error: there must be at least 2 assets.\n");
         return 1;
     }
 

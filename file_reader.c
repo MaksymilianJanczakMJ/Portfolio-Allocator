@@ -159,6 +159,10 @@ int read_from_file(
                 free(v);
                 return 1;
             }
+
+            if (*contribution_out < 0) {
+                *contribution_out = 0;
+            }
         }
 
         /* Reading data from the rest of the file. */
