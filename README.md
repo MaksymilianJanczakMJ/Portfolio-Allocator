@@ -83,4 +83,5 @@ The program is written in ANSI C (C90) and can be compiled using GCC.
 	./portfolio_allocator
 
 ## Tests
-`tests` directory consists of tests for extreme cases where algorithm could act in not predictable maner.
+`tests` directory consists of tests for extreme cases where algorithm could act in unpredictable maner.
+
