@@ -29,26 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64fd08cb-56f4-47d8-9802-c0b81df99777" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/tests/few_assets/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/high_contribution/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/high_value/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/high_value_spread/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/many_assets/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/small_contribution/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/small_value/out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/small_value_spread/out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/tests/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/few_assets/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/few_assets/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/high_contribution/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/high_contribution/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/high_value/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/high_value/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/high_value_spread/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/high_value_spread/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/many_assets/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/many_assets/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/small_contribution/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/small_contribution/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/small_value/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/small_value/data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/small_value_spread/data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/small_value_spread/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_reader.c" beforeDir="false" afterPath="$PROJECT_DIR$/file_reader.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,30 +85,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ File.main.c.executor": "Run",
-    "CMake Application.Portfolio_allocator.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/maksy/CLionProjects/Portfolio_allocator/tests/small_value_spread",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ File.main.c.executor&quot;: &quot;Run&quot;,
+    &quot;CMake Application.Portfolio_allocator.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maksy/CLionProjects/Portfolio_allocator/tests/small_value_spread&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\maksy\CLionProjects\Portfolio_allocator\tests\small_value_spread" />
@@ -187,7 +169,8 @@
       <workItem from="1769764822542" duration="257000" />
       <workItem from="1769884455891" duration="443000" />
       <workItem from="1770047458684" duration="2000" />
-      <workItem from="1770577454926" duration="7086000" />
+      <workItem from="1770577454926" duration="8553000" />
+      <workItem from="1770628721144" duration="5534000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <option name="closed" value="true" />
@@ -333,7 +316,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770580053692</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1770584978124</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1770584978124</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

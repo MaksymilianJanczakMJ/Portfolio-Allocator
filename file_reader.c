@@ -207,6 +207,12 @@ int read_from_file(
         row++;
     }
 
+    if (row == 0) {
+        free(v);
+        fprintf(stderr, "Error in read_from_file() function: \"%s\" file is empty.", path);
+        return 1;
+    }
+
     memcpy(v_out, v, file_len * sizeof *v);
 
     fclose(file);
