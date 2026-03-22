@@ -24,9 +24,9 @@ This tool is made to address an allocation problem that occurs while making repe
 
 ## Usage
 1. In `data.txt` data for allocation must be declared.
-2. In the file first line represents the contribution value.
+2. In the file, first line represents the contribution value.
 3. Rest of the lines represent assets, one for each line.
-4. The Assets are described as follows `asset_name;value;target_percentage`. 
+4. The assets are declared as follows `asset_name;value;target_percentage`. 
 
 ### Example:
 
