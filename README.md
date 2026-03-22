@@ -87,4 +87,5 @@ The program is written in ANSI C (C90) and can be compiled using GCC.
 ## Tests
 `tests` directory contains tests for extreme cases where algorithm could act in unpredictable maner.
 
-
+***
+&copy; Maksymilian Jańczak
